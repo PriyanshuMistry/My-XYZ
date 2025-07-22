@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvoicePro - Modern Billing Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-receipt"></i>
+                <h2>InvoicePro</h2>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="nav-item active">
+                    <a href="#dashboard" class="nav-link">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#invoices" class="nav-link">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>Invoices</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#clients" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Clients</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link">
+                        <i class="fas fa-box"></i>
+                        <span>Products</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#payments" class="nav-link">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#reports" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <img src="https://via.placeholder.com/40x40/4F46E5/FFFFFF?text=JD" alt="User">
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card revenue">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Revenue</h3>
+                        <p class="stat-value">$47,250</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +12.5% from last month
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card invoices">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Invoices Sent</h3>
+                        <p class="stat-value">127</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +8 this week
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card pending">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Pending Payments</h3>
+                        <p class="stat-value">$12,340</p>
+                        <span class="stat-change negative">
+                            <i class="fas fa-arrow-down"></i>
+                            -5% from last month
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card clients">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Active Clients</h3>
+                        <p class="stat-value">89</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +15 new clients
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts and Tables Row -->
+            <div class="dashboard-row">
+                <!-- Recent Invoices -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recent Invoices</h3>
+                        <button class="btn-secondary">View All</button>
+                    </div>
+                    <div class="card-content">
+                        <div class="table-container">
+                            <table class="invoices-table">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Client</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Due Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#INV-001</td>
+                                        <td>Acme Corporation</td>
+                                        <td>$2,500.00</td>
+                                        <td><span class="status paid">Paid</span></td>
+                                        <td>Dec 15, 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#INV-002</td>
+                                        <td>Tech Solutions Inc</td>
+                                        <td>$1,800.00</td>
+                                        <td><span class="status pending">Pending</span></td>
+                                        <td>Dec 20, 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#INV-003</td>
+                                        <td>Design Studio</td>
+                                        <td>$950.00</td>
+                                        <td><span class="status overdue">Overdue</span></td>
+                                        <td>Dec 10, 2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>#INV-004</td>
+                                        <td>Marketing Agency</td>
+                                        <td>$3,200.00</td>
+                                        <td><span class="status draft">Draft</span></td>
+                                        <td>Dec 25, 2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Chart -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Revenue Overview</h3>
+                        <select class="period-select">
+                            <option>Last 6 months</option>
+                            <option>Last 3 months</option>
+                            <option>This year</option>
+                        </select>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-placeholder">
+                            <div class="chart-bars">
+                                <div class="bar" style="height: 60%;" data-value="$8,500"></div>
+                                <div class="bar" style="height: 80%;" data-value="$11,200"></div>
+                                <div class="bar" style="height: 45%;" data-value="$6,800"></div>
+                                <div class="bar" style="height: 90%;" data-value="$12,800"></div>
+                                <div class="bar" style="height: 70%;" data-value="$9,500"></div>
+                                <div class="bar" style="height: 95%;" data-value="$13,500"></div>
+                            </div>
+                            <div class="chart-labels">
+                                <span>Jul</span>
+                                <span>Aug</span>
+                                <span>Sep</span>
+                                <span>Oct</span>
+                                <span>Nov</span>
+                                <span>Dec</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Quick Actions</h3>
+                </div>
+                <div class="card-content">
+                    <div class="quick-actions">
+                        <button class="action-btn primary">
+                            <i class="fas fa-plus"></i>
+                            Create Invoice
+                        </button>
+                        <button class="action-btn secondary">
+                            <i class="fas fa-user-plus"></i>
+                            Add Client
+                        </button>
+                        <button class="action-btn secondary">
+                            <i class="fas fa-box"></i>
+                            Add Product
+                        </button>
+                        <button class="action-btn secondary">
+                            <i class="fas fa-download"></i>
+                            Export Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

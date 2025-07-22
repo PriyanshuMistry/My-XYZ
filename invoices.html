@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoices - InvoicePro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .invoices-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .invoices-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-select {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background: white;
+            color: #374151;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .create-invoice-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .create-invoice-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .invoices-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .invoice-card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .invoice-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .invoice-number {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .invoice-amount {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .invoice-client {
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .invoice-date {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .invoice-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .invoice-btn {
+            padding: 0.375rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            background: white;
+            color: #64748b;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .invoice-btn:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+
+        .invoice-btn.primary {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .invoice-btn.primary:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-receipt"></i>
+                <h2>InvoicePro</h2>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="invoices.html" class="nav-link">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>Invoices</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#clients" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Clients</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link">
+                        <i class="fas fa-box"></i>
+                        <span>Products</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#payments" class="nav-link">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#reports" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Invoices</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search invoices...">
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <img src="https://via.placeholder.com/40x40/4F46E5/FFFFFF?text=JD" alt="User">
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Invoices Content -->
+        <div class="dashboard-content">
+            <div class="invoices-header">
+                <div>
+                    <h2>All Invoices</h2>
+                    <p class="text-gray-600">Manage and track your invoices</p>
+                </div>
+                <div class="invoices-actions">
+                    <select class="filter-select">
+                        <option>All Invoices</option>
+                        <option>Paid</option>
+                        <option>Pending</option>
+                        <option>Overdue</option>
+                        <option>Draft</option>
+                    </select>
+                    <button class="create-invoice-btn">
+                        <i class="fas fa-plus"></i>
+                        Create Invoice
+                    </button>
+                </div>
+            </div>
+
+            <div class="invoices-grid">
+                <div class="invoice-card">
+                    <div class="invoice-header">
+                        <div>
+                            <div class="invoice-number">#INV-001</div>
+                            <div class="invoice-client">Acme Corporation</div>
+                            <div class="invoice-date">Due: Dec 15, 2024</div>
+                        </div>
+                        <div>
+                            <div class="invoice-amount">$2,500.00</div>
+                            <span class="status paid">Paid</span>
+                        </div>
+                    </div>
+                    <div class="invoice-actions">
+                        <button class="invoice-btn primary">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-header">
+                        <div>
+                            <div class="invoice-number">#INV-002</div>
+                            <div class="invoice-client">Tech Solutions Inc</div>
+                            <div class="invoice-date">Due: Dec 20, 2024</div>
+                        </div>
+                        <div>
+                            <div class="invoice-amount">$1,800.00</div>
+                            <span class="status pending">Pending</span>
+                        </div>
+                    </div>
+                    <div class="invoice-actions">
+                        <button class="invoice-btn primary">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-paper-plane"></i> Send
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-header">
+                        <div>
+                            <div class="invoice-number">#INV-003</div>
+                            <div class="invoice-client">Design Studio</div>
+                            <div class="invoice-date">Due: Dec 10, 2024</div>
+                        </div>
+                        <div>
+                            <div class="invoice-amount">$950.00</div>
+                            <span class="status overdue">Overdue</span>
+                        </div>
+                    </div>
+                    <div class="invoice-actions">
+                        <button class="invoice-btn primary">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-exclamation-triangle"></i> Remind
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-header">
+                        <div>
+                            <div class="invoice-number">#INV-004</div>
+                            <div class="invoice-client">Marketing Agency</div>
+                            <div class="invoice-date">Due: Dec 25, 2024</div>
+                        </div>
+                        <div>
+                            <div class="invoice-amount">$3,200.00</div>
+                            <span class="status draft">Draft</span>
+                        </div>
+                    </div>
+                    <div class="invoice-actions">
+                        <button class="invoice-btn primary">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-paper-plane"></i> Send
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-header">
+                        <div>
+                            <div class="invoice-number">#INV-005</div>
+                            <div class="invoice-client">Startup Ventures</div>
+                            <div class="invoice-date">Due: Jan 5, 2025</div>
+                        </div>
+                        <div>
+                            <div class="invoice-amount">$4,750.00</div>
+                            <span class="status pending">Pending</span>
+                        </div>
+                    </div>
+                    <div class="invoice-actions">
+                        <button class="invoice-btn primary">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="invoice-card">
+                    <div class="invoice-header">
+                        <div>
+                            <div class="invoice-number">#INV-006</div>
+                            <div class="invoice-client">Global Enterprises</div>
+                            <div class="invoice-date">Due: Jan 10, 2025</div>
+                        </div>
+                        <div>
+                            <div class="invoice-amount">$6,500.00</div>
+                            <span class="status paid">Paid</span>
+                        </div>
+                    </div>
+                    <div class="invoice-actions">
+                        <button class="invoice-btn primary">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="invoice-btn">
+                            <i class="fas fa-copy"></i> Duplicate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
